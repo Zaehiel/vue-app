@@ -50,6 +50,9 @@ export const store = new Vuex.Store({
         ...user,
         isSelected,
       }));
+    },
+    DELETE_USER(state, id) {
+      state.users = state.users.filter(user => user.id !== id);
     }
   },
   actions: {
@@ -68,6 +71,9 @@ export const store = new Vuex.Store({
     },
     toggleSelectAllUsers({ commit }, isSelected) {
       commit('TOGGLE_ALL_USERS', isSelected);
+    },
+    deleteUser({ commit }, id) {
+      commit('DELETE_USER', id);
     }
   },
 });

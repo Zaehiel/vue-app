@@ -88,15 +88,14 @@ export default {
   },
   methods: {
     ...mapActions([
-      'fetchUsers',
       'toggleUserSelection',
-      'toggleSelectAllUsers',
+      'deleteUser',
     ]),
     changeHandler() {
       this.toggleUserSelection(this.source.id);
     },
     deleteHandler() {
-      this.$emit('deleteUser', this.source.id);
+      this.deleteUser(this.source.id);
     }
   }
 }
