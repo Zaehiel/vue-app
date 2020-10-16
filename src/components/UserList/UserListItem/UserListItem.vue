@@ -5,6 +5,8 @@
       'user-item--selected': source.isSelected,
     }"
     @click="changeHandler"
+    @mouseenter="isHovering = true"
+    @mouseleave="isHovering = false"
   >
     <div v-if="source.isSelected" class="user-item__highlight" />
     <div class="user-item__selector">
@@ -23,7 +25,7 @@
     <div class="user-item__permission-level">
       <Badge :role="source.role" />
     </div>
-    <div class="user-item__actions">
+    <div v-if="isHovering" class="user-item__actions">
       <button class="klaus-button">
         <IconPen />
         <span class="klaus-button__text">
@@ -50,6 +52,7 @@ export default {
   data() {
     return {
       checked: false,
+      isHovering: false,
     }
   },
   props: {
